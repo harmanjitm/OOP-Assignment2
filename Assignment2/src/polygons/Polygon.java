@@ -39,19 +39,48 @@ public abstract class Polygon implements Comparable<Polygon>
 		int returnValue = 0;
 		if(p.getCompareType() == 'h')
 		{
-			
+			if(this.height < p.height)
+			{
+				returnValue = -1;
+			}
+			if(this.height == p.height)
+			{
+				returnValue = 0;
+			}
+			if(this.height > p.height)
+			{
+				returnValue = 1;
+			}
 		}
 		else if(p.getCompareType() == 'v')
 		{
-			
+			if(this.calcVolume() < p.calcVolume())
+			{
+				returnValue = -1;
+			}
+			if(this.calcVolume() == p.calcVolume())
+			{
+				returnValue = 0;
+			}
+			if(this.calcVolume() > p.calcVolume())
+			{
+				returnValue = 1;
+			}
 		}
 		else if(p.getCompareType() == 'a')
 		{
-			
-		}
-		else
-		{
-			returnValue = 0;
+			if(this.calcBaseArea() < p.calcBaseArea())
+			{
+				returnValue = -1;
+			}
+			if(this.calcBaseArea() == p.calcBaseArea())
+			{
+				returnValue = 0;
+			}
+			if(this.calcBaseArea() > p.calcBaseArea())
+			{
+				returnValue = 1;
+			}
 		}
 		return returnValue;
 	}
