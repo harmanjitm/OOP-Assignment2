@@ -22,8 +22,32 @@ public class LoadDataFile
 	
 	public LoadDataFile(String file, char compareType, char sortType)
 	{
+		if(checkCompareType(compareType) == true && checkSortType(sortType) == true)
+		{
+			System.out.println("Error: Invalid compare or sort type.");
+		}
 		System.out.printf("\nFile: %s\nCompare Type: %c\nSort Type: %c\n\n", file, compareType, sortType);
 		createObjects(file, compareType);
+	}
+	
+	public boolean checkCompareType(char compareType)
+	{
+		boolean returnVal = true;
+		if(compareType != 'v' || compareType != 'h' || compareType != 'a')
+		{
+			returnVal = false;
+		}
+		return returnVal;
+	}
+	
+	public boolean checkSortType(char sortType)
+	{
+		boolean returnVal = true;
+		if(sortType != 'b' || sortType != 's' || sortType != 'i' || sortType != 'm' || sortType != 'q' || sortType != 'z')
+		{
+			returnVal = false;
+		}
+		return returnVal;
 	}
 	
 	public void createObjects(String file, char compareType)
