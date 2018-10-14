@@ -26,8 +26,12 @@ public class LoadDataFile
 		{
 			System.out.println("Error: Invalid compare or sort type.");
 		}
-		System.out.printf("\nFile: %s\nCompare Type: %c\nSort Type: %c\n\n", file, compareType, sortType);
-		createObjects(file, compareType);
+		else
+		{
+			System.out.printf("\nFile: %s\nCompare Type: %c\nSort Type: %c\n\n", file, compareType, sortType);
+			createObjects(file, compareType);
+			new SortList(AppDriver.list, sortType, compareType);
+		}
 	}
 	
 	public boolean checkCompareType(char compareType)
