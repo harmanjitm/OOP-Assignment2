@@ -15,11 +15,11 @@ public class BubbleSort
 		this.sortedList = doBubbleSort(list);
 	}
 	
+	@SuppressWarnings("resource")
 	private ArrayList<Polygon> doBubbleSort(ArrayList<Polygon> list)
 	{
 		Polygon temp;
-		Long startTime, stopTime;
-		startTime = System.currentTimeMillis();
+		Long startTime = System.currentTimeMillis();
 		for(int i = 0; i<list.size() - 1;i++)
 		{
 			for(int x = 0;x<list.size() - 1 - i;x++)
@@ -32,7 +32,7 @@ public class BubbleSort
 				}
 			}
 		}
-		stopTime = System.currentTimeMillis();
+		Long stopTime = System.currentTimeMillis();
 		Long totalTime = stopTime-startTime;
 		System.out.println("Time: " + totalTime);
 		for(int i=list.size()-20;i<list.size();i++)
