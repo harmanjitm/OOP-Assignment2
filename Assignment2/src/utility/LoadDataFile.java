@@ -28,7 +28,7 @@ public class LoadDataFile
 		}
 		else
 		{
-			System.out.printf("\nFile: %s\nCompare Type: %c\nSort Type: %c\n\n", file, compareType, sortType);
+			System.out.println("File: " + file + "\n");
 			createObjects(file, compareType);
 			new SortList(AppDriver.list, sortType, compareType);
 		}
@@ -104,7 +104,7 @@ public class LoadDataFile
 					}
 				}
 			}
-			System.out.println(AppDriver.list.size() + " Objects Created.");
+			System.out.println("Objects Created: " + AppDriver.list.size() + "\n");
 			inFile.close();
 		} catch (FileNotFoundException e)
 		{

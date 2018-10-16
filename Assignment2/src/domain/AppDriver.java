@@ -26,7 +26,7 @@ public class AppDriver
 				new LoadDataFile(args[0].substring(2, args[0].length()), arg3.charAt(2) ,arg2.charAt(2));
 			}
 			else if(arg1.startsWith("-t") && arg2.startsWith("-f") && arg3.startsWith("-s"))
-			{//
+			{
 				new LoadDataFile(args[1].substring(2, args[1].length()), arg1.charAt(2) ,arg3.charAt(2));
 			}
 			else if(arg1.startsWith("-t") && arg2.startsWith("-s") && arg3.startsWith("-f"))
@@ -45,6 +45,10 @@ public class AppDriver
 			{
 				System.out.println("Invalid Arguments.");
 			}
+		}
+		else
+		{
+			System.out.println("Invalid Argument Length.");
 		}
 	}
 }

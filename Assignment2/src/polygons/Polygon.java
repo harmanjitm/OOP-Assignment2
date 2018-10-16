@@ -87,6 +87,19 @@ public abstract class Polygon implements Comparable<Polygon>
 	
 	@Override
 	public String toString() {
-		return super.toString();
+		String returnVal = "";
+		if(this.compareType == 'h')
+		{
+			returnVal = String.valueOf(getHeight());
+		}
+		if(this.compareType == 'v')
+		{
+			returnVal = String.valueOf(calcVolume());
+		}
+		if(this.compareType == 'a')
+		{
+			returnVal = String.valueOf(calcBaseArea());
+		}
+		return returnVal;
 	}
 }
