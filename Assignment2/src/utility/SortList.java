@@ -6,7 +6,6 @@ import polygons.Polygon;
 
 public class SortList
 {
-	
 	public SortList()
 	{
 		
@@ -17,22 +16,22 @@ public class SortList
 		switch(sortType)
 		{
 		case 'b':
-			new BubbleSort(list, compareType);
+			new BubbleSort(list);
 			break;
 		case 's':
-			//TODO
+			new SelectionSort(list);
 			break;
 		case 'i':
-			//TODO
+			new InsertionSort(list);
 			break;
 		case 'm':
-			//TODO
+			new MergeSort(list);
 			break;
 		case 'q':
-			//TODO
+			new QuickSort(list);
 			break;
 		case 'z':
-			//TODO
+			new ImplementedSort(list);
 			break;
 		}
 	}

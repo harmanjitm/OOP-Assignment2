@@ -4,32 +4,17 @@ import java.util.ArrayList;
 
 import polygons.Polygon;
 
-public class BubbleSort
+public class ImplementedSort
 {
-	
-	public BubbleSort(ArrayList<Polygon> list)
+	public ImplementedSort(ArrayList<Polygon> list)
 	{
-		System.out.printf("Sorting Started\nCompare Type: %c\nSort Type: Bubble Sort\n", list.get(0).getCompareType());
-		doBubbleSort(list);
+		System.out.printf("Sorting Started\nCompare Type: %c\nSort Type: Selection Sort\n", list.get(0).getCompareType());
+		doImplementedSort(list);
 	}
 	
-	private void doBubbleSort(ArrayList<Polygon> list)
+	private void doImplementedSort(ArrayList<Polygon> list)
 	{
-		Polygon temp;
 		Long startTime = System.currentTimeMillis();
-		
-		for(int i = 0; i<list.size() - 1;i++)
-		{
-			for(int x = 0;x<list.size() - 1 - i;x++)
-			{
-				if(list.get(x).compareTo(list.get(x+1)) == 1)
-				{
-					temp = list.get(x);
-					list.set(x, list.get(x+1));
-					list.set(x+1, temp);
-				}
-			}
-		}
 		
 		Long stopTime = System.currentTimeMillis();
 		Long totalTime = stopTime-startTime;
