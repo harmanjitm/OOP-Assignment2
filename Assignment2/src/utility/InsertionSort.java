@@ -13,8 +13,19 @@ public class InsertionSort
 	}
 	
 	private void doInsertionSort(ArrayList<Polygon> list)
-	{	Long startTime = System.currentTimeMillis();
-	
+	{	
+		Long startTime = System.currentTimeMillis();
+		for(int i=1;i<list.size();i++)
+		{
+			Polygon p = list.get(i);
+			int j = i-1;
+			while(j>=0 && list.get(j).compareTo(p) == 1)
+			{
+				list.set(j+1, list.get(j));
+				j = j-1;
+			}
+			list.set(j+1, p);
+		}
 		Long stopTime = System.currentTimeMillis();
 		Long totalTime = stopTime-startTime;
 		System.out.println("\nTime: " + totalTime + " milliseconds.\n");
