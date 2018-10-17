@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import polygons.Polygon;
 import utility.LoadDataFile;
 
+/**
+ * Method to launch the Sorting application
+ * @author 758243
+ *
+ */
 public class AppDriver
 {
 	public static ArrayList<Polygon> list = new ArrayList<>();

@@ -4,38 +4,74 @@ import java.util.ArrayList;
 
 import polygons.Polygon;
 
+/**
+ * Class to perform the MergeSort on a specified list
+ * @author 758243
+ *
+ */
 public class MergeSort
 {
 	private ArrayList<Polygon> sortedList;
 	
+	/**
+	 * Method to call other methods to perform the MergeSort
+	 * @param list The list to sort
+	 */
 	public MergeSort(ArrayList<Polygon> list)
 	{
 		System.out.printf("Sorting Started\nCompare Type: %c\nSort Type: Merge Sort\n", list.get(0).getCompareType());
 		doMergeSort(list);
 	}
 	
+	/**
+	 * Method to perform the Merge Sort on a specified list
+	 * @param list The list to sort
+	 */
 	private void doMergeSort(ArrayList<Polygon> list)
 	{
+		System.out.println("List size: " + list.size());
 		Long startTime = System.currentTimeMillis();
-		sort(list, 0, list.size()-1);
+		sort(list, 0, list.size());
 		Long stopTime = System.currentTimeMillis();
 		Long totalTime = stopTime-startTime;
 		System.out.println("\nTime: " + totalTime + " milliseconds.\n");
 		printList(sortedList);
 	}
 	
+	/**
+	 * The method to split the List into multiple arrays
+	 * @param list The list to split
+	 * @param l The beginning of the list
+	 * @param r The end of the list
+	 */
 	private void sort(ArrayList<Polygon> list, int l, int r)
 	{
-		if(l<r)
+		if(l==0)
 		{
-			int middle = (l+r)/2;
-			sort(list, l, middle);
-			sort(list, middle+1, r);
-			mergeArray(list, l, middle, r);
+			
+		}
+		else
+		{
+			if(l<r)
+			{
+				int middle = (l+r)/2;
+				System.out.println("Middle: " + middle);
+				sort(list, l, middle);
+				sort(list, middle+1, r);
+				mergeArray(list, l, middle, r);
+			}
 		}
 		this.sortedList = list;
 	}
 	
+	/**
+	 * Method to merge the array in sorted order
+	 * @param list The list to merge
+	 * @param left The left value of the list
+	 * @param middle The middle value of the list
+	 * @param right The right value of the list
+	 * @return The sorted list to return
+	 */
 	private ArrayList<Polygon> mergeArray(ArrayList<Polygon> list, int left, int middle, int right)
 	{
 		ArrayList<Polygon> lList = new ArrayList<>();
@@ -89,6 +125,10 @@ public class MergeSort
 		return list;
 	}
 	
+	/**
+	 * Method to print the list in specified format
+	 * @param list The list to print
+	 */
 	private void printList(ArrayList<Polygon> list)
 	{
 		System.out.printf("%6s\t Value\n","Index");

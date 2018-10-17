@@ -4,13 +4,19 @@ import java.util.ArrayList;
 
 import polygons.Polygon;
 
+/**
+ * Class used to manage different Sorting types and calls appropriate other Classes depending on user compareType
+ * @author 758243
+ *
+ */
 public class SortList
 {
-	public SortList()
-	{
-		
-	}
-	
+	/**
+	 * Method to decide which sort to occur based on user input
+	 * @param list The list to sort
+	 * @param sortType The sortType to perform
+	 * @param compareType The compareType to compare against
+	 */
 	public SortList(ArrayList<Polygon> list, char sortType, char compareType)
 	{
 		switch(sortType)

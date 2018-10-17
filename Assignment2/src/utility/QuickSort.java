@@ -4,14 +4,27 @@ import java.util.ArrayList;
 
 import polygons.Polygon;
 
+/**
+ * Class to perform the QuickSort on a specified list
+ * @author 758243
+ *
+ */
 public class QuickSort
 {
+	/**
+	 * Method to call other methods to perform QuickSort on a specified list
+	 * @param list The list to sort
+	 */
 	public QuickSort(ArrayList<Polygon> list)
 	{
 		System.out.printf("Sorting Started\nCompare Type: %c\nSort Type: Quick Sort\n", list.get(0).getCompareType());
 		doQuickSort(list);
 	}
 	
+	/**
+	 * Method to do the Quick Sort on a list and print out the total time taken.
+	 * @param list The list to sort
+	 */
 	private void doQuickSort(ArrayList<Polygon> list)
 	{
 		Long startTime = System.currentTimeMillis();
@@ -22,6 +35,10 @@ public class QuickSort
 		printList(list);
 	}
 	
+	/**
+	 * Method to print out the given list in a specified format
+	 * @param list The list to print
+	 */
 	private void printList(ArrayList<Polygon> list)
 	{
 		System.out.printf("%6s\t Value\n","Index");

@@ -4,14 +4,27 @@ import java.util.ArrayList;
 
 import polygons.Polygon;
 
+/**
+ * Class to sort a specific list using Insertion Sort algoritem.
+ * @author 758243
+ *
+ */
 public class InsertionSort
 {
+	/**
+	 * Method to call other methods to do the Insertion Sort
+	 * @param list The list to sort
+	 */
 	public InsertionSort(ArrayList<Polygon> list)
 	{
 		System.out.printf("Sorting Started\nCompare Type: %c\nSort Type: Insertion Sort\n", list.get(0).getCompareType());
 		doInsertionSort(list);
 	}
 	
+	/**
+	 * Method to perform the Insertion Sort on a specified list
+	 * @param list The list to sort
+	 */
 	private void doInsertionSort(ArrayList<Polygon> list)
 	{	
 		Long startTime = System.currentTimeMillis();
@@ -32,6 +45,10 @@ public class InsertionSort
 		printList(list);
 	}
 	
+	/**
+	 * Method to print values of a specified list
+	 * @param list The list to print
+	 */
 	private void printList(ArrayList<Polygon> list)
 	{
 		System.out.printf("%6s\t Value\n","Index");

@@ -13,13 +13,27 @@ import polygons.Pyramid;
 import polygons.SquarePrism;
 import polygons.TriangularPrism;
 
+/**
+ * Class to create a new list and read data from file and assign to new objects
+ * @author 758243
+ *
+ */
 public class LoadDataFile
 {
+	/**
+	 * Null constructor for loading a file.
+	 */
 	public LoadDataFile()
 	{
 		
 	}
 	
+	/**
+	 * Constructor to load a file based on specified values
+	 * @param file The file to open
+	 * @param compareType The compareType to assign to objects
+	 * @param sortType The type of sort to perform on the file
+	 */
 	public LoadDataFile(String file, char compareType, char sortType)
 	{
 		if(checkCompareType(compareType) == true && checkSortType(sortType) == true)
@@ -40,6 +54,11 @@ public class LoadDataFile
 		}
 	}
 	
+	/**
+	 * Method to check the compareType to see if its valid
+	 * @param compareType The compareType to check against
+	 * @return Return true if compareType is valid and false if its not
+	 */
 	public boolean checkCompareType(char compareType)
 	{
 		boolean returnVal = true;
@@ -50,6 +69,11 @@ public class LoadDataFile
 		return returnVal;
 	}
 	
+	/**
+	 * Method to check the sortType to see if its valid
+	 * @param sortType The sortType to check against
+	 * @return Return true if the sortType is valud, false if its not
+	 */
 	public boolean checkSortType(char sortType)
 	{
 		boolean returnVal = true;
@@ -60,6 +84,12 @@ public class LoadDataFile
 		return returnVal;
 	}
 	
+	/**
+	 * Method to open the file and create objects and assign values based on file text
+	 * @param file The file to open
+	 * @param compareType The compareType to assign to objects
+	 * @throws FileNotFoundException Throws a FileNotFoundException if the file type is invalid
+	 */
 	public void createObjects(String file, char compareType) throws FileNotFoundException
 	{
 		Scanner inFile = new Scanner(new File(file));

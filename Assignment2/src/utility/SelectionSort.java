@@ -4,15 +4,27 @@ import java.util.ArrayList;
 
 import polygons.Polygon;
 
+/**
+ * Class to perform SelectionSort based on an input List
+ * @author 758243
+ *
+ */
 public class SelectionSort
 {
-	
+	/**
+	 * Method to call other methods to perform the SelectionSort
+	 * @param list The list to sort
+	 */
 	public SelectionSort(ArrayList<Polygon> list)
 	{
 		System.out.printf("Sorting Started\nCompare Type: %c\nSort Type: Selection Sort\n", list.get(0).getCompareType());
 		doSelectionSort(list);
 	}
 	
+	/**
+	 * Method to do the SelectionSort and print out the total time taken
+	 * @param list The list to sort
+	 */
 	private void doSelectionSort(ArrayList<Polygon> list)
 	{
 		Long startTime = System.currentTimeMillis();
@@ -37,6 +49,10 @@ public class SelectionSort
 		printList(list);
 	}
 	
+	/**
+	 * Method to print the list in specified order
+	 * @param list The list to sort
+	 */
 	private void printList(ArrayList<Polygon> list)
 	{
 		System.out.printf("%6s\t Value\n","Index");
