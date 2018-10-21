@@ -45,9 +45,9 @@ public class SelectionSort
 			list[i] = temp;
 		}
 		Long stopTime = System.currentTimeMillis();
+		printList();
 		Long totalTime = stopTime-startTime;
 		System.out.println("\nTime: " + totalTime + " milliseconds.\n");
-		printList();
 	}
 	
 	/**

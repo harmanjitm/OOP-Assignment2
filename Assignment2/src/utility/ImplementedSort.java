@@ -46,9 +46,9 @@ public class ImplementedSort
 		}
 		
 		Long stopTime = System.currentTimeMillis();
+		printList();
 		Long totalTime = stopTime-startTime;
 		System.out.println("\nTime: " + totalTime + " milliseconds.\n");
-		printList();
 	}
 	
 	/**

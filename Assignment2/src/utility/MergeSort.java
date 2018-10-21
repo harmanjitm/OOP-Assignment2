@@ -34,9 +34,9 @@ public class MergeSort
 		Long startTime = System.currentTimeMillis();
 		sort(0, list.length-1);
 		Long stopTime = System.currentTimeMillis();
+		printList();
 		Long totalTime = stopTime-startTime;
 		System.out.println("\nTime: " + totalTime + " milliseconds.\n");
-		printList();
 	}
 	
 	/**

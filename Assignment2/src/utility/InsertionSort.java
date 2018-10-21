@@ -41,9 +41,9 @@ public class InsertionSort
 			list[j+1] = p;
 		}
 		Long stopTime = System.currentTimeMillis();
+		printList();
 		Long totalTime = stopTime-startTime;
 		System.out.println("\nTime: " + totalTime + " milliseconds.\n");
-		printList();
 	}
 	
 	/**

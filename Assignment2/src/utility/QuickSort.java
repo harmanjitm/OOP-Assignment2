@@ -20,7 +20,6 @@ public class QuickSort
 		this.list = list;
 		System.out.printf("Sorting Started\nCompare Type: %c\nSort Type: Quick Sort\n", list[0].getCompareType());
 		doQuickSort();
-		printList();
 	}
 	
 	/**
@@ -32,6 +31,7 @@ public class QuickSort
 		Long startTime = System.currentTimeMillis();
 		sort(0, list.length-1);
 		Long stopTime = System.currentTimeMillis();
+		printList();
 		Long totalTime = stopTime-startTime;
 		System.out.println("\nTime: " + totalTime + " milliseconds.\n");
 	}

@@ -93,6 +93,7 @@ public class LoadDataFile
 	 */
 	public void createObjects(String file, char compareType) throws FileNotFoundException
 	{
+		System.out.println("Creating Objects...\n");
 		Scanner inFile = new Scanner(new File(file));
 		String[] fields = inFile.nextLine().split(" ");
 		Long totalObjects = Long.parseLong(fields[0]);
