@@ -9,6 +9,7 @@ import polygons.Cone;
 import polygons.Cylinder;
 import polygons.OctagonalPrism;
 import polygons.PentagonalPrism;
+import polygons.Polygon;
 import polygons.Pyramid;
 import polygons.SquarePrism;
 import polygons.TriangularPrism;
@@ -46,7 +47,7 @@ public class LoadDataFile
 			try
 			{
 				createObjects(file, compareType);
-				new SortList(AppDriver.list, sortType, compareType);
+				new SortList(AppDriver.SortingList, sortType, compareType);
 			} catch (FileNotFoundException e)
 			{
 				System.out.println("Error: File not found");
@@ -95,9 +96,10 @@ public class LoadDataFile
 		Scanner inFile = new Scanner(new File(file));
 		String[] fields = inFile.nextLine().split(" ");
 		Long totalObjects = Long.parseLong(fields[0]);
+		AppDriver.SortingList = new Polygon[Integer.parseInt(fields[0])];
 		
 		System.out.println("Total Objects: " + totalObjects);
-		
+		int counter = 0;
 		for(int i=0; i<fields.length;i+=3)
 		{
 			if(i!=0)
@@ -106,31 +108,38 @@ public class LoadDataFile
 				{
 				case "Cylinder":
 					Cylinder cyl = new Cylinder(Double.parseDouble(fields[i-1]), compareType, Double.parseDouble(fields[i]));
-					AppDriver.list.add(cyl);
+					AppDriver.SortingList[counter] = cyl;
+					counter++;
 					break;
 				case "Cone":
 					Cone cone = new Cone(Double.parseDouble(fields[i-1]), compareType, Double.parseDouble(fields[i]));
-					AppDriver.list.add(cone);
+					AppDriver.SortingList[counter] = cone;
+					counter++;
 					break;
 				case "Pyramid":
 					Pyramid pyr = new Pyramid(Double.parseDouble(fields[i-1]), compareType, Double.parseDouble(fields[i]));
-					AppDriver.list.add(pyr);
+					AppDriver.SortingList[counter] = pyr;
+					counter++;
 					break;
 				case "PentagonalPrism":
 					PentagonalPrism penPrism = new PentagonalPrism(Double.parseDouble(fields[i-1]), compareType, Double.parseDouble(fields[i]));
-					AppDriver.list.add(penPrism);
+					AppDriver.SortingList[counter] = penPrism;
+					counter++;
 					break;
 				case "OctagonalPrism":
 					OctagonalPrism octPrism = new OctagonalPrism(Double.parseDouble(fields[i-1]), compareType, Double.parseDouble(fields[i]));
-					AppDriver.list.add(octPrism);
+					AppDriver.SortingList[counter] = octPrism;
+					counter++;
 					break;
 				case "TriangularPrism":
 					TriangularPrism triPrism = new TriangularPrism(Double.parseDouble(fields[i-1]), compareType, Double.parseDouble(fields[i]));
-					AppDriver.list.add(triPrism);
+					AppDriver.SortingList[counter] = triPrism;
+					counter++;
 					break;
 				case "SquarePrism":
 					SquarePrism squarePrism = new SquarePrism(Double.parseDouble(fields[i-1]), compareType, Double.parseDouble(fields[i]));
-					AppDriver.list.add(squarePrism);
+					AppDriver.SortingList[counter] = squarePrism;
+					counter++;
 					break;
 				default:
 					System.out.println("Error: " + fields[i-2] + " shape not found.");
@@ -138,7 +147,7 @@ public class LoadDataFile
 				}
 			}
 		}
-		System.out.println("Objects Created: " + AppDriver.list.size() + "\n");
+		System.out.println("Objects Created: " + AppDriver.SortingList.length + "\n");
 		inFile.close();
 	}
 }

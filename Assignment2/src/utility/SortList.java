@@ -1,7 +1,5 @@
 package utility;
 
-import java.util.ArrayList;
-
 import polygons.Polygon;
 
 /**
@@ -17,7 +15,7 @@ public class SortList
 	 * @param sortType The sortType to perform
 	 * @param compareType The compareType to compare against
 	 */
-	public SortList(ArrayList<Polygon> list, char sortType, char compareType)
+	public SortList(Polygon[] list, char sortType, char compareType)
 	{
 		switch(sortType)
 		{

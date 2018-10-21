@@ -1,7 +1,5 @@
 package utility;
 
-import java.util.ArrayList;
-
 import polygons.Polygon;
 
 /**
@@ -11,31 +9,34 @@ import polygons.Polygon;
  */
 public class MergeSort
 {
-	private ArrayList<Polygon> sortedList;
+	private Polygon[] list;
+	private Polygon[] temp;
 	
 	/**
 	 * Method to call other methods to perform the MergeSort
 	 * @param list The list to sort
 	 */
-	public MergeSort(ArrayList<Polygon> list)
+	public MergeSort(Polygon[] list)
 	{
-		System.out.printf("Sorting Started\nCompare Type: %c\nSort Type: Merge Sort\n", list.get(0).getCompareType());
-		doMergeSort(list);
+		this.list = list;
+		temp = new Polygon[list.length];
+		System.out.printf("Sorting Started\nCompare Type: %c\nSort Type: Merge Sort\n", list[0].getCompareType());
+		doMergeSort();
 	}
 	
 	/**
 	 * Method to perform the Merge Sort on a specified list
 	 * @param list The list to sort
 	 */
-	private void doMergeSort(ArrayList<Polygon> list)
+	private void doMergeSort()
 	{
-		System.out.println("List size: " + list.size());
+		System.out.println("List size: " + list.length);
 		Long startTime = System.currentTimeMillis();
-		sort(list, 0, list.size());
+		sort(0, list.length-1);
 		Long stopTime = System.currentTimeMillis();
 		Long totalTime = stopTime-startTime;
 		System.out.println("\nTime: " + totalTime + " milliseconds.\n");
-		printList(sortedList);
+		printList();
 	}
 	
 	/**
@@ -44,24 +45,17 @@ public class MergeSort
 	 * @param l The beginning of the list
 	 * @param r The end of the list
 	 */
-	private void sort(ArrayList<Polygon> list, int l, int r)
+	private void sort(int l, int r)
 	{
-		if(l==0)
+		if(l>=r)
 		{
-			
+			return;
 		}
-		else
-		{
-			if(l<r)
-			{
-				int middle = (l+r)/2;
-				System.out.println("Middle: " + middle);
-				sort(list, l, middle);
-				sort(list, middle+1, r);
-				mergeArray(list, l, middle, r);
-			}
-		}
-		this.sortedList = list;
+		
+		int middle = (l+r)/2;
+		sort(l, middle);
+		sort(middle+1, r);
+		mergeArray(l, middle, r);
 	}
 	
 	/**
@@ -72,80 +66,68 @@ public class MergeSort
 	 * @param right The right value of the list
 	 * @return The sorted list to return
 	 */
-	private ArrayList<Polygon> mergeArray(ArrayList<Polygon> list, int left, int middle, int right)
+	private void mergeArray(int left, int middle, int right)
 	{
-		ArrayList<Polygon> lList = new ArrayList<>();
-		ArrayList<Polygon> rList = new ArrayList<>();
-		
-		int lSize = middle - left;
-		int rSize = right - middle;
-		
-		for(int i=0;i<lSize;++i)
+		for(int i=left;i<=right;i++)
 		{
-			lList.add(list.get(left + i));
-		}
-		for(int i=0;i<rSize;++i)
-		{
-			rList.add(list.get(middle + 1 + i));
+			temp[i] = list[i];
 		}
 		
-		System.out.println("rSize: " + rSize + "\nlSize: " + lSize);
-		int i = 0;
-		int j = 0;
-		
+		int i = left;
+		int j = middle + 1;
 		int k = left;
-		while(i < lSize && j < rSize)
+		
+		while((i<=middle) && (j<=right))
 		{
-			if(lList.get(i).compareTo(rList.get(j)) == -1 || lList.get(i).compareTo(rList.get(j)) == 0)
+			if(temp[i].compareTo(temp[j]) == -1 || temp[i].compareTo(temp[j]) == 0)
 			{
-				list.set(k, lList.get(i));
+				list[k] = temp[i];
 				i++;
 			}
 			else
 			{
-				list.set(k, rList.get(j));
+				list[k] = temp[j];
 				j++;
 			}
 			k++;
 		}
-		System.out.println("i: " + i + "\nj: " + j + "\nk: " + k);
-		while(i<lSize)
+		
+		while(i<=middle)
 		{
-			list.set(k, lList.get(i));
+			list[k] = temp[i];
 			i++;
 			k++;
 		}
 		
-		while(j<rSize)
+		while(j <= right)
 		{
-			list.set(k, rList.get(i));//TODO fix this
-			i++;
+			list[k] = temp[j];
+			j++;
 			k++;
 		}
-		return list;
 	}
 	
 	/**
 	 * Method to print the list in specified format
 	 * @param list The list to print
 	 */
-	private void printList(ArrayList<Polygon> list)
+	private void printList()
 	{
 		System.out.printf("%6s\t Value\n","Index");
-		for(int i=0;i<=list.size();i+=1000)
+		for(int i=0;i<=list.length;i+=1000)
 		{
 			if(i==0)
 			{
-				System.out.printf("%5d:\t %s\n",i+1,list.get(i));
+				System.out.printf("%5d:\t %s\n",i,list[i]);
 			}
-			else if(i+1000 > list.size())
+			else if(i+1000 > list.length)
 			{
-				System.out.printf("%5d:\t %s\n",i,list.get(i));
-				System.out.printf("%5d:\t %s\n",list.size(),list.get(list.size()-1));
+				System.out.printf("%5d:\t %s\n",i,list[i]);
+				System.out.printf("%5d:\t %s\n",list.length,list[list.length-1]);
 			}
 			else
 			{
-				System.out.printf("%5d:\t %s\n",i,list.get(i));
+				System.out.printf("%5d:\t %s\n",i,list[i]);
 			}
 		}
 	}

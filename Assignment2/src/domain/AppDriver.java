@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.ArrayList;
-
 import polygons.Polygon;
 import utility.LoadDataFile;
 
@@ -12,7 +10,7 @@ import utility.LoadDataFile;
  */
 public class AppDriver
 {
-	public static ArrayList<Polygon> list = new ArrayList<>();
+	public static Polygon[] SortingList;
 	
 	public static void main(String[] args)
 	{	

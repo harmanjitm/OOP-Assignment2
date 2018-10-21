@@ -1,7 +1,5 @@
 package utility;
 
-import java.util.ArrayList;
-
 import polygons.Polygon;
 
 /**
@@ -11,65 +9,68 @@ import polygons.Polygon;
  */
 public class SelectionSort
 {
+	private Polygon[] list;
+	
 	/**
 	 * Method to call other methods to perform the SelectionSort
 	 * @param list The list to sort
 	 */
-	public SelectionSort(ArrayList<Polygon> list)
+	public SelectionSort(Polygon[] list)
 	{
-		System.out.printf("Sorting Started\nCompare Type: %c\nSort Type: Selection Sort\n", list.get(0).getCompareType());
-		doSelectionSort(list);
+		this.list = list;
+		System.out.printf("Sorting Started\nCompare Type: %c\nSort Type: Selection Sort\n", list[0].getCompareType());
+		doSelectionSort();
 	}
 	
 	/**
 	 * Method to do the SelectionSort and print out the total time taken
 	 * @param list The list to sort
 	 */
-	private void doSelectionSort(ArrayList<Polygon> list)
+	private void doSelectionSort()
 	{
 		Long startTime = System.currentTimeMillis();
-		for(int i = 0;i<list.size();i++)
+		for(int i = 0;i<list.length;i++)
 		{
-			Polygon temp = list.get(i);
+			Polygon temp = list[i];
 			int index = i;
-			for(int j = i;j < list.size();j++)
+			for(int j = i;j < list.length;j++)
 			{
-				if(list.get(j).compareTo(temp) == -1)
+				if(list[j].compareTo(temp) == -1)
 				{
-					temp = list.get(j);
+					temp = list[j];
 					index = j;
 				}
 			}
-			list.set(index, list.get(i));
-			list.set(i, temp);
+			list[index] = list[i];
+			list[i] = temp;
 		}
 		Long stopTime = System.currentTimeMillis();
 		Long totalTime = stopTime-startTime;
 		System.out.println("\nTime: " + totalTime + " milliseconds.\n");
-		printList(list);
+		printList();
 	}
 	
 	/**
 	 * Method to print the list in specified order
 	 * @param list The list to sort
 	 */
-	private void printList(ArrayList<Polygon> list)
+	private void printList()
 	{
 		System.out.printf("%6s\t Value\n","Index");
-		for(int i=0;i<=list.size();i+=1000)
+		for(int i=0;i<=list.length;i+=1000)
 		{
 			if(i==0)
 			{
-				System.out.printf("%5d:\t %s\n",i+1,list.get(i));
+				System.out.printf("%5d:\t %s\n",i,list[i]);
 			}
-			else if(i+1000 > list.size())
+			else if(i+1000 > list.length)
 			{
-				System.out.printf("%5d:\t %s\n",i,list.get(i));
-				System.out.printf("%5d:\t %s\n",list.size(),list.get(list.size()-1));
+				System.out.printf("%5d:\t %s\n",i,list[i]);
+				System.out.printf("%5d:\t %s\n",list.length,list[list.length-1]);
 			}
 			else
 			{
-				System.out.printf("%5d:\t %s\n",i,list.get(i));
+				System.out.printf("%5d:\t %s\n",i,list[i]);
 			}
 		}
 	}
